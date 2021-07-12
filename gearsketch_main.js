@@ -34,7 +34,7 @@
     AXIS_RADIUS = Util.AXIS_RADIUS;
 
     //BUTTON_INFO = [["playButton", "PlayIcon.png"], ["clearButton", "ClearIcon.png"], ["cloudButton", "CloudIcon.png"], ["helpButton", "HelpIcon.png"]];
-    BUTTON_INFO = [["clearButton", "ClearIcon.png"], ["helpButton", "HelpIcon.png"]]; //----------------
+    BUTTON_INFO = [["clearButton", "ClearIcon.png"], ["helpButton", "HelpWordsIcon.png"]]; //----------------
 
     MovementAction = {
       PEN_DOWN: "penDown",
@@ -261,7 +261,7 @@
           } else if (button.name === "cloudButton") {
             return this.uploadBoard();
           } else if (button.name === "helpButton") {
-            return this.playDemo();
+            //return this.playDemo();
           }
         } else {
           _ref = this.gearAt(x, y), gear = _ref.gear, selection = _ref.selection;
@@ -1011,8 +1011,8 @@
       //this.movementCompletion = 0;
       //this.isDemoPlaying = true;
       //return this.displayMessage("click anywhere to stop the demo");
-      return this.displayMessage("Sketch a not-too-small and not-too-big circle to add a gear. Drag the centre of the gear to move it. Drag the mouse on the tooth of the gear to add an arrow. Draw a line across a gear to delete the gear. Click CLEAR button to clear all.");
-      //return alert("Sketch a not-too-small and not-too-big circle to add a gear. Drag the centre of the gear to move it. Drag the mouse on the tooth of the gear to add an arrow. Draw a line across a gear to delete the gear. Click CLEAR button to clear all.");
+      //alert("Sketch a not-too-small and not-too-big circle to add a gear. Drag the centre of the gear to move it. Drag the mouse on the tooth of the gear to add an arrow. Draw a line across a gear to delete the gear. Click CLEAR button to clear all.");
+      return isDemoPlaying = false;
     };
 
     GearSketch.prototype.stopDemo = function() {
