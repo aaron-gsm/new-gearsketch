@@ -34,7 +34,7 @@
     AXIS_RADIUS = Util.AXIS_RADIUS;
 
     //BUTTON_INFO = [["playButton", "PlayIcon.png"], ["clearButton", "ClearIcon.png"], ["cloudButton", "CloudIcon.png"], ["helpButton", "HelpIcon.png"]];
-    BUTTON_INFO = [["clearButton", "ClearIcon.png"]];
+    BUTTON_INFO = [["clearButton", "ClearIcon.png"], ["helpButton", "HelpIcon.png"]]; //----------------
 
     MovementAction = {
       PEN_DOWN: "penDown",
@@ -416,8 +416,10 @@
         if (idealTrueAreaRatio > 0.80 && idealTrueAreaRatio < 1.20 && t > MIN_GEAR_TEETH) {
           x = sumX / numberOfPoints;
           y = sumY / numberOfPoints;
-          t = Math.floor(prompt("number of teeth"))
-          return new Gear(new Point(x, y), 0, t);
+          t = Math.floor(prompt("number of teeth"))   //----------------------
+          if (t > MIN_GEAR_TEETH) {                   //----------------------
+            return new Gear(new Point(x, y), 0, t);   //----------------------
+          }
         }
       }
       return null;
@@ -560,8 +562,8 @@
         ctx.translate(x, y);
         ctx.rotate(rotation);
         ctx.drawImage(gearImage, -0.5 * gearImage.width, -0.5 * gearImage.height);
-        ctx.font = '12px serif';    //-------------------------------
-        ctx.fillText('N = ' + numberOfTeeth.toString(), -0.05 * gearImage.width, -0.5 * gearImage.height + 40); //--------------
+        ctx.font = '20px serif';    //-------------------------------
+        ctx.fillText('N = ' + numberOfTeeth.toString(),  -30, 40 - 0.5 * gearImage.height); //--------------
         ctx.restore();
         return;
       }
@@ -777,7 +779,7 @@
         if (this.message.length > 0) {
           ctx.save();
           ctx.fillStyle = this.messageColor;
-          ctx.font = "bold 20px Arial";
+          ctx.font = "12px Arial";    //------------------------------
           ctx.fillText(this.message, 20, 120);
           ctx.restore();
         }
@@ -794,7 +796,8 @@
       //this.buttons["clearButton"].location.x = Math.max(this.canvas.width - 260, this.buttons["playButton"].location.x + 80);
       //this.buttons["cloudButton"].location.x = this.buttons["clearButton"].location.x + 80;
       //return this.buttons["helpButton"].location.x = this.buttons["cloudButton"].location.x + 80;
-      return this.canvas.width ;
+      //return this.canvas.width ;
+      return this.buttons["helpButton"].location.x = this.buttons["clearButton"].location.x + 80;
     };
 
     GearSketch.prototype.loadDemoMovements = function() {
@@ -1001,13 +1004,15 @@
     };
 
     GearSketch.prototype.playDemo = function() {
-      this.loadDemoMovements();
-      this.boardBackup = this.board.clone();
-      this.board.clear();
-      this.currentDemoMovement = 0;
-      this.movementCompletion = 0;
-      this.isDemoPlaying = true;
-      return this.displayMessage("click anywhere to stop the demo");
+      //this.loadDemoMovements();
+      //this.boardBackup = this.board.clone();
+      //this.board.clear();
+      //this.currentDemoMovement = 0;
+      //this.movementCompletion = 0;
+      //this.isDemoPlaying = true;
+      //return this.displayMessage("click anywhere to stop the demo");
+      return this.displayMessage("Sketch a not-too-small and not-too-big circle to add a gear. Drag the centre of the gear to move it. Drag the mouse on the tooth of the gear to add an arrow. Draw a line across a gear to delete the gear. Click CLEAR button to clear all.");
+      //return alert("Sketch a not-too-small and not-too-big circle to add a gear. Drag the centre of the gear to move it. Drag the mouse on the tooth of the gear to add an arrow. Draw a line across a gear to delete the gear. Click CLEAR button to clear all.");
     };
 
     GearSketch.prototype.stopDemo = function() {
