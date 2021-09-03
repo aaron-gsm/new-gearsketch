@@ -563,7 +563,7 @@
         ctx.rotate(rotation);
         ctx.drawImage(gearImage, -0.5 * gearImage.width, -0.5 * gearImage.height);
         ctx.font = '20px serif';    //-------------------------------
-        ctx.fillText('N = ' + numberOfTeeth.toString(),  -30, 40 - 0.5 * gearImage.height); //--------------
+        ctx.fillText('z = ' + numberOfTeeth.toString(),  -30, 40 - 0.5 * gearImage.height); //--------------
         ctx.restore();
         return;
       }
