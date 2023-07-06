@@ -606,7 +606,7 @@
       ctx.stroke();
       ctx.beginPath();
       ctx.moveTo(AXIS_RADIUS, 0);
-      ctx.lineTo(gear.innerRadius, 0);
+      //ctx.lineTo(gear.innerRadius, 0);  //---------
       ctx.closePath();
       ctx.stroke();
       return ctx.restore();
